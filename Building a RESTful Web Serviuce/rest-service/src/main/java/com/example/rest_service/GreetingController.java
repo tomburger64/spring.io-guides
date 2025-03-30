@@ -6,20 +6,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-// in spring, http requests are handled by a "controller"
-// gotta write "@RestController" above the controller class
-
+// http requests are sent from browser / app / whatever
+// http request is received by the controller
 @RestController
 public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    // greeting method that returns an obj
-    // "@GetMapping" makes GET requests to *url*/greeting get "mapped" to this method ↓
+    // when a GET request to URL + @GetMapping parameter happens, runs the following code ↓
     @GetMapping("/greetings")
-    
-    // "@RequestParam" makes the name value from the query string bind with the "name" parameter
+
+    // "@RequestParam" requests a query parameter from the URL
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        // returns new Greeting obj with an id and the name
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
