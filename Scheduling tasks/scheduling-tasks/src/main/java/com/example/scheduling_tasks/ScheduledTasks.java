@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// will likely see this later
+// makes the class a Spring Bean, so Spring manages it in various way (I'll get deeper into it later, this guide isn't about this yet)
 @Component
 public class ScheduledTasks {
     private static final Logger log = LoggerFactory.getLogger((ScheduledTasks.class));
