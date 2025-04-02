@@ -1,0 +1,1 @@
+Title self-explains, here I try to do stuff I saw by reading previous projects, notes, and docs

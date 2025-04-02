@@ -15,7 +15,6 @@ public class GreetingController {
 
     // when a GET request to URL + @GetMapping parameter happens, runs the following code ↓
     @GetMapping("/greetings")
-
     // "@RequestParam" requests a query parameter from the URL
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         // returns new Greeting obj with an id and the name
