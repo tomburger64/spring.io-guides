@@ -7,3 +7,4 @@ Sooooo after looking up more ways of learning Spring (to then understand what ha
 
 ## dependencies
 - Java 21
+- Go through the associated spring initializr link that's towards the start of each guide which is in each guide's readme
