@@ -25,23 +25,26 @@ public class ConsumingRestApplication {
 	// you do this ↓
 	// and Spring creates the object, and distributes it automatically to whatever needs it
 	@Bean
-	// a RestTemplate makes HTTP requests
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+	public RestTemplate restTemplate(RestTemplateBuilder builder) { // a RestTemplate makes HTTP requests, has to be built with the RestTemplateBuilder builder (not just an obj)
 		return builder.build();
 	}
 
 	// @Profile("!test") means code below won't be run when testing
 	@Bean
-	@Profile("!test")
+	@Profile("!test") //CommandLineRunner runs code right after the app starts, not waiting for some get request at a specific URL like I've seen in "Consuming a Restful web service"
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		// "lambda" shortcut ↓
-		// means it's creating the CommandLineRunner object
-		// then overrides the "run" method which is the only method CmdLnRnr has in the "{ }"
+		// returns a commandlinerunner obj and "@Override"s the "run" method
+		// run method is the only method the obj has
 		return args -> {
-			// makes an HTTP request to *URL* and converts the data received into a Quote obj
+			// RestTemplate deals with http so:
+			// makes a get request to the url, waits for an object from there
+			// converts json into a quote obj
 			Quote quote = restTemplate.getForObject("http://localhost:8080/api/random", Quote.class);
-			// logs toString method in the logs
+			// "logs" via toString method in the terminal
 			log.info(quote.toString());
 		};
 	}
 }
+
+// it's not that complicated, yet I can't get to remember what everything does to understand everything at once
